@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
 import 'package:medibuddy/Design/ArcClipper.dart';
+import 'package:medibuddy/Design/HomePage.dart';
 
 class LoginScreen extends StatefulWidget {
   @override
@@ -115,7 +116,7 @@ class _LoginScreenState extends State<LoginScreen> {
                        borderRadius: BorderRadius.circular(20),
                      ),
                      child: Text("Login"),
-                     onPressed: ()=>null,
+                     onPressed: ()=>Navigator.push(context, MaterialPageRoute(builder: (context)=>HomeScreen())),
                      color: Colors.white,
                    ),
                
