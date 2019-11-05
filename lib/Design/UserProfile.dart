@@ -39,17 +39,31 @@ class GemCard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       width: MediaQuery.of(context).size.width-60,
-      padding: const EdgeInsets.all(20),
+      
       margin: const EdgeInsets.symmetric(horizontal: 10,vertical: 8),
       decoration: BoxDecoration(
-        gradient: mediBuddyGradient,
+        image: DecorationImage(
+          image: AssetImage("assets/images/dback.jpg"),
+          fit: BoxFit.cover,
+          alignment: Alignment.centerRight
+        ),
         borderRadius: BorderRadius.circular(20)        
       ),
-      child: Row(
+      child: Opacity(
+        opacity: 0.5,
+              child: Container(
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            gradient: mediBuddyGradient
+          ),
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
         children: <Widget>[
           Text("Rohan Malik",style: TextStyle(color: Colors.white,fontSize: 19,fontWeight: FontWeight.w700),)
         ],
       ),
+        ),
+      )
     );
   }
 }

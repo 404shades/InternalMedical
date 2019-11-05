@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:medibuddy/Design/HomePage.dart';
+import 'package:medibuddy/Design/LoginScreen.dart';
 
 void main() => runApp(MyApp());
 
@@ -31,7 +32,7 @@ class MyApp extends StatelessWidget {
         primarySwatch: Colors.blue,
         primaryColor: const Color(0xFF495aff)
       ),
-      home: HomeScreen()
+      home: LoginScreen()
     );
   }
 }
