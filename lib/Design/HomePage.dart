@@ -1,7 +1,9 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:medibuddy/Design/ClaimsPage.dart';
 import 'package:medibuddy/Design/UserProfile.dart';
+import 'package:medibuddy/Design/WalletScreen.dart';
 import 'package:medibuddy/Design/gradients.dart';
 import 'package:percent_indicator/percent_indicator.dart';
 
@@ -34,12 +36,16 @@ class _HomeScreenState extends State<HomeScreen> {
               IconButton(
                 icon: Icon(Feather.getIconData('shield')),
                 color: const Color(0xFF495aff),
-                onPressed: null,
+                onPressed: ()=>Navigator.push(context, MaterialPageRoute(
+                  builder: (context)=>ClaimsPage()
+                )),
               ),
               IconButton(
                 icon: Icon(SimpleLineIcons.getIconData('wallet')),
                 color: const Color(0xFF495aff),
-                onPressed: null,
+                onPressed: ()=>Navigator.push(context, MaterialPageRoute(
+                  builder: (context)=>WalletScreen()
+                )),
               ),
               IconButton(
                 icon: Icon(Feather.getIconData('user')),
@@ -50,38 +56,20 @@ class _HomeScreenState extends State<HomeScreen> {
               )
             ],
           )),
-      body: Column(
-        children: <Widget>[
-          Stack(
-            fit: StackFit.loose,
+      body: SingleChildScrollView(
+              child: Container(
+          child: Column(
             children: <Widget>[
-              CustomAppBar(),
-              UserData(),
+              Stack(
+                children: <Widget>[
+                  CustomAppBar(),
+                  UserData(),
+                ],
+              ),
+              
             ],
           ),
-          Container(
-            padding: const EdgeInsets.all(12),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text("My Claims",style: TextStyle(fontWeight: FontWeight.w700,fontSize: 21),),
-                Text("View All",style: TextStyle(fontSize: 16,color: const Color(0xFF495aff),fontWeight: FontWeight.w500),)
-              ],
-            ),
-          ),
-          Container(
-            height: 275,
-            width: MediaQuery.of(context).size.width,
-            padding: const EdgeInsets.all(12),
-            child: ListView.builder(
-              itemCount: 10,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context,index){
-                return SingleClaim(index: index,);
-              },
-            ),
-          )
-        ],
+        ),
       ),
     );
   }
@@ -123,7 +111,7 @@ class _UserDataState extends State<UserData> {
             elevation: 0,
             leading: IconButton(
               icon: Icon(Icons.arrow_back_ios),
-              onPressed: () => null,
+              onPressed: () => Navigator.pop(context),
             ),
             actions: <Widget>[
               CircleAvatar(
@@ -279,6 +267,51 @@ class ClaimCard extends StatelessWidget {
 }
 
 
+
+class ClaimServiceCard extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Card(
+      child: Container(
+        padding: const EdgeInsets.symmetric(horizontal: 10,vertical: 6),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: <Widget>[
+            SingleClaimService(icon: AntDesign.getIconData('hearto'),title: "Health",),
+            SingleClaimService(icon: Icons.refresh,title: "Renew",),
+            SingleClaimService(icon: Icons.monetization_on,title: "Claims",)
+          
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class SingleClaimService extends StatelessWidget {
+  final IconData icon;
+  final String title;
+  const SingleClaimService({Key key, this.icon, this.title}) : super(key: key);
+  @override
+  Widget build(BuildContext context) {
+    return FittedBox(
+      fit: BoxFit.fitWidth,
+      child: Container(
+              decoration: BoxDecoration(
+          
+        ),
+        padding: const EdgeInsets.all(10),
+        child: Column(
+          children: <Widget>[
+            Icon(icon,color: const Color(0xFF495aff),size: 34,),
+            SizedBox(height: 10,),
+            Text(title,style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500),)
+          ],
+        ),
+      ),
+    );
+  }
+}
 
 class SingleClaim extends StatelessWidget {
   final int index;
