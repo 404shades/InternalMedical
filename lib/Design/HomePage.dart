@@ -1,6 +1,7 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_icons/flutter_icons.dart';
+import 'package:flutter_inner_drawer/inner_drawer.dart';
 import 'package:medibuddy/Design/ClaimsPage.dart';
 import 'package:medibuddy/Design/UserProfile.dart';
 import 'package:medibuddy/Design/WalletScreen.dart';
@@ -13,82 +14,277 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+
+      final GlobalKey<InnerDrawerState> _innerDrawerKey = GlobalKey<InnerDrawerState>();
+
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Feather.getIconData('github')),
-        backgroundColor: const Color(0xFF495aff),
-      ),
-      bottomNavigationBar: BottomAppBar(
-          shape: CircularNotchedRectangle(),
-          notchMargin: 6,
-          clipBehavior: Clip.antiAlias,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              IconButton(
-                icon: Icon(Feather.getIconData('home')),
-                color: const Color(0xFF495aff),
-                onPressed: () => null,
-              ),
-              IconButton(
-                icon: Icon(Feather.getIconData('shield')),
-                color: Colors.grey,
-                onPressed: ()=>Navigator.push(context, MaterialPageRoute(
-                  builder: (context)=>ClaimsPage()
-                )),
-              ),
-              IconButton(
-                icon: Icon(SimpleLineIcons.getIconData('wallet')),
-                color: Colors.grey,
-                onPressed: ()=>Navigator.push(context, MaterialPageRoute(
-                  builder: (context)=>WalletScreen()
-                )),
-              ),
-              IconButton(
-                icon: Icon(Feather.getIconData('user')),
-                color: Colors.grey,
-                onPressed: ()=>Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context)=>UserProfile()
-                )),
-              )
-            ],
-          )),
-      body: SingleChildScrollView(
-              child: Container(
-          child: Column(
-            children: <Widget>[
-              Stack(
+    return Material(
+      child: InnerDrawer(
+        key: _innerDrawerKey,
+        onTapClose: true,
+        swipe: false,
+        leftOffset: 1,
+        tapScaffoldEnabled: false,
+        colorTransition: Colors.white,
+        leftChild: Container(
+          color:const Color(0xFF495aff),
+          padding: const EdgeInsets.symmetric(vertical: 80, horizontal: 30),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
                 children: <Widget>[
-                  CustomAppBar(),
-                  UserData(),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+
+                    children: <Widget>[
+                      Container(
+                        height: 70,
+                        width: 70,
+                        margin: const EdgeInsets.symmetric(vertical: 20),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            boxShadow: [
+                              BoxShadow(
+                                  color: Colors.white12.withOpacity(0.1),
+                                  blurRadius: 19,
+                                  spreadRadius: 6)
+                            ],
+                            image: DecorationImage(
+                              fit: BoxFit.cover,
+                                image: AssetImage("assets/images/enprofile.jpg"))),
+                      ),
+                      IconButton(icon: Icon(Icons.close),color: Colors.white,onPressed: (){
+                        _innerDrawerKey.currentState.close();
+                      },)
+                    ],
+                  ),
+                  Text(
+                    "Jane Williams",
+                    style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w500),
+                  ),
+                  Text(
+                    "rohan@404shades.co",
+                    style: TextStyle(
+                        color: Colors.white, fontWeight: FontWeight.w300),
+                  ),
+                  Spacer(),
+                  Column(
+                    children: <Widget>[
+                      Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            Icon(
+                              SimpleLineIcons.getIconData("people"),
+                              color: Colors.white,
+                              size: 20,
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            Text(
+                              "Lorem Ipsum",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w600),
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            Icon(
+                              SimpleLineIcons.getIconData("compass"),
+                              color: Colors.white,
+                              size: 20,
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            Text(
+                              "Lorem Capsicum",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w600),
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            Icon(
+                              SimpleLineIcons.getIconData("event"),
+                              color: Colors.white,
+                              size: 20,
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            Text(
+                              "Your Activity",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w600),
+                            )
+                          ],
+                        ),
+                      ),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      InkWell(
+                        splashColor: Colors.white,
+                        onTap: () => null,
+                        child: Container(
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: <Widget>[
+                              Icon(
+                                SimpleLineIcons.getIconData("settings"),
+                                color: Colors.white,
+                                size: 20,
+                              ),
+                              SizedBox(
+                                width: 20,
+                              ),
+                              Text(
+                                "Settings",
+                                style: TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 17,
+                                    fontWeight: FontWeight.w600),
+                              )
+                            ],
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
+                  Spacer(),
+                  InkWell(
+                    onTap: (){
+                      _innerDrawerKey.currentState.dispose();
+                      Navigator.pop(context);
+                    },
+                                    child: Container(
+                      child: Container(
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.start,
+                          children: <Widget>[
+                            Icon(
+                              Feather.getIconData('log-out'),
+                              color: Colors.white,
+                            ),
+                            SizedBox(
+                              width: 20,
+                            ),
+                            Text(
+                              "Log out",
+                              style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 17,
+                                  fontWeight: FontWeight.w600),
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
-              Container(
-            padding: const EdgeInsets.all(12),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: <Widget>[
-                Text("My Claims",style: TextStyle(fontWeight: FontWeight.w700,fontSize: 21),),
-                Text("View All",style: TextStyle(fontSize: 16,color: const Color(0xFF495aff),fontWeight: FontWeight.w500),)
-              ],
-            ),
+        ),
+        scaffold: Scaffold(
+          floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
+          floatingActionButton: FloatingActionButton(
+            child: Icon(Feather.getIconData('github')),
+            backgroundColor: const Color(0xFF495aff),
           ),
-          Container(
-            height: 275,
-            width: MediaQuery.of(context).size.width,
-            padding: const EdgeInsets.all(12),
-            child: ListView.builder(
-              itemCount: 10,
-              scrollDirection: Axis.horizontal,
-              itemBuilder: (context,index){
-                return SingleClaim(index: index,);
-              },
+          bottomNavigationBar: BottomAppBar(
+              shape: CircularNotchedRectangle(),
+              notchMargin: 6,
+              clipBehavior: Clip.antiAlias,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: <Widget>[
+                  IconButton(
+                    icon: Icon(Feather.getIconData('home')),
+                    color: const Color(0xFF495aff),
+                    onPressed: () => null,
+                  ),
+                  IconButton(
+                    icon: Icon(Feather.getIconData('shield')),
+                    color: Colors.grey,
+                    onPressed: ()=>Navigator.push(context, MaterialPageRoute(
+                      builder: (context)=>ClaimsPage()
+                    )),
+                  ),
+                  IconButton(
+                    icon: Icon(SimpleLineIcons.getIconData('wallet')),
+                    color: Colors.grey,
+                    onPressed: ()=>Navigator.push(context, MaterialPageRoute(
+                      builder: (context)=>WalletScreen()
+                    )),
+                  ),
+                  IconButton(
+                    icon: Icon(Feather.getIconData('user')),
+                    color: Colors.grey,
+                    onPressed: ()=>Navigator.of(context).push(MaterialPageRoute(
+                      builder: (context)=>UserProfile()
+                    )),
+                  )
+                ],
+              )),
+          body: SingleChildScrollView(
+                  child: Container(
+              child: Column(
+                children: <Widget>[
+                  Stack(
+                    children: <Widget>[
+                      CustomAppBar(),
+                      UserData(globalKey: _innerDrawerKey,),
+                    ],
+                  ),
+                  Container(
+                padding: const EdgeInsets.all(12),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: <Widget>[
+                    Text("My Claims",style: TextStyle(fontWeight: FontWeight.w700,fontSize: 21),),
+                    Text("View All",style: TextStyle(fontSize: 16,color: const Color(0xFF495aff),fontWeight: FontWeight.w500),)
+                  ],
+                ),
+              ),
+              Container(
+                height: 275,
+                width: MediaQuery.of(context).size.width,
+                padding: const EdgeInsets.all(12),
+                child: ListView.builder(
+                  itemCount: 10,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context,index){
+                    return SingleClaim(index: index,);
+                  },
+                ),
+              )
+                ],
+              ),
             ),
-          )
-            ],
           ),
         ),
       ),
@@ -114,6 +310,9 @@ class _CustomAppBarState extends State<CustomAppBar> {
 }
 
 class UserData extends StatefulWidget {
+  final GlobalKey<InnerDrawerState> globalKey;
+
+  const UserData({Key key, this.globalKey}) : super(key: key);
   @override
   _UserDataState createState() => _UserDataState();
 }
@@ -131,8 +330,10 @@ class _UserDataState extends State<UserData> {
             backgroundColor: Colors.transparent,
             elevation: 0,
             leading: IconButton(
-              icon: Icon(Icons.arrow_back_ios),
-              onPressed: () => Navigator.pop(context),
+              icon: Icon(Icons.menu),
+              onPressed: () {
+                widget.globalKey.currentState.toggle();
+              },
             ),
             actions: <Widget>[
               CircleAvatar(
