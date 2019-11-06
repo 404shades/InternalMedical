@@ -66,7 +66,28 @@ class _HomeScreenState extends State<HomeScreen> {
                   UserData(),
                 ],
               ),
-              
+              Container(
+            padding: const EdgeInsets.all(12),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: <Widget>[
+                Text("My Claims",style: TextStyle(fontWeight: FontWeight.w700,fontSize: 21),),
+                Text("View All",style: TextStyle(fontSize: 16,color: const Color(0xFF495aff),fontWeight: FontWeight.w500),)
+              ],
+            ),
+          ),
+          Container(
+            height: 275,
+            width: MediaQuery.of(context).size.width,
+            padding: const EdgeInsets.all(12),
+            child: ListView.builder(
+              itemCount: 10,
+              scrollDirection: Axis.horizontal,
+              itemBuilder: (context,index){
+                return SingleClaim(index: index,);
+              },
+            ),
+          )
             ],
           ),
         ),
@@ -331,12 +352,12 @@ class SingleClaim extends StatelessWidget {
                 shape: BoxShape.circle,
                 border: Border.all(width: 1,color: const Color(0xFF495aff))
               ),
-              child: Icon(Icons.card_travel,color: const Color(0xFF495aff),),
+              child: Icon(Icons.favorite_border,color: const Color(0xFF495aff),),
             ),
             SizedBox(height: 20,),
             Row(
               children: <Widget>[
-                Text("Travel Claim",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500),)
+                Text("Medical Claim",style: TextStyle(fontSize: 20,fontWeight: FontWeight.w500),)
               ],
             ),
             SizedBox(height: 5,),
