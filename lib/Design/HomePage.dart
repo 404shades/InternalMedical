@@ -21,6 +21,7 @@ class _HomeScreenState extends State<HomeScreen> {
   Widget build(BuildContext context) {
     return Material(
       child: InnerDrawer(
+        leftAnimationType: InnerDrawerAnimation.linear,
         key: _innerDrawerKey,
         onTapClose: true,
         swipe: false,

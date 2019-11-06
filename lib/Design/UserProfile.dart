@@ -21,46 +21,7 @@ class _UserProfileState extends State<UserProfile> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-       floatingActionButtonLocation: FloatingActionButtonLocation.centerDocked,
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Feather.getIconData('github')),
-        backgroundColor: const Color(0xFF495aff),
-      ),
-      bottomNavigationBar: BottomAppBar(
-          shape: CircularNotchedRectangle(),
-          notchMargin: 6,
-          clipBehavior: Clip.antiAlias,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: <Widget>[
-              IconButton(
-                icon: Icon(Feather.getIconData('home')),
-                color: Colors.grey,
-                onPressed: () => null,
-              ),
-              IconButton(
-                icon: Icon(Feather.getIconData('shield')),
-                color: Colors.grey,
-                onPressed: ()=>Navigator.push(context, MaterialPageRoute(
-                  builder: (context)=>ClaimsPage()
-                )),
-              ),
-              IconButton(
-                icon: Icon(SimpleLineIcons.getIconData('wallet')),
-                color: Colors.grey,
-                onPressed: ()=>Navigator.push(context, MaterialPageRoute(
-                  builder: (context)=>WalletScreen()
-                )),
-              ),
-              IconButton(
-                icon: Icon(Feather.getIconData('user')),
-                color: const Color(0xFF495aff),
-                onPressed: ()=>Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context)=>UserProfile()
-                )),
-              )
-            ],
-          )),
+      
       appBar: AppBar(
         title: Text("Profile"),
       ),
