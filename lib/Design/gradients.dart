@@ -40,14 +40,14 @@ var blackBlueGradient = new LinearGradient(
   stops: [0.0,1.0]
 );
 var redSexyGradient = new LinearGradient(
-  colors: [const Color(0xFFF6356F),const Color(0xFFFF5F50)],
+  colors: [const Color(0xFFff758c),const Color(0xFFff7eb3)],
   tileMode: TileMode.clamp,
   begin: Alignment.bottomLeft,
   end: Alignment.topRight,
   stops: [0.0,1.0]
 );
 var greenSexyGradient = new LinearGradient(
-  colors: [const Color(0xFF92D000),const Color(0xFFE1EB01)],
+  colors: [const Color(0xFF0ba360),const Color(0xFF3cba92)],
   tileMode: TileMode.clamp,
   begin: Alignment.bottomLeft,
   end: Alignment.topRight,

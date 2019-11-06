@@ -35,23 +35,23 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               IconButton(
                 icon: Icon(Feather.getIconData('shield')),
-                color: const Color(0xFF495aff),
+                color: Colors.grey,
                 onPressed: ()=>Navigator.push(context, MaterialPageRoute(
                   builder: (context)=>ClaimsPage()
                 )),
               ),
               IconButton(
                 icon: Icon(SimpleLineIcons.getIconData('wallet')),
-                color: const Color(0xFF495aff),
+                color: Colors.grey,
                 onPressed: ()=>Navigator.push(context, MaterialPageRoute(
                   builder: (context)=>WalletScreen()
                 )),
               ),
               IconButton(
                 icon: Icon(Feather.getIconData('user')),
-                color: const Color(0xFF495aff),
+                color: Colors.grey,
                 onPressed: ()=>Navigator.of(context).push(MaterialPageRoute(
-                  builder: (context)=>UserProfileSection()
+                  builder: (context)=>UserProfile()
                 )),
               )
             ],
