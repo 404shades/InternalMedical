@@ -1,8 +1,5 @@
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_icons/flutter_icons.dart';
-import 'package:medibuddy/Design/ClaimsPage.dart';
-import 'package:medibuddy/Design/WalletScreen.dart';
 import 'package:medibuddy/Design/gradients.dart';
 import 'dart:ui' as ui;
 class UserProfile extends StatefulWidget {
